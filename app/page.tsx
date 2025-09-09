@@ -33,9 +33,12 @@ import {
   Facebook 
 } from "lucide-react"
 import { useState } from "react"
+import projectsData from '@/data/projects.json';
 
 export default function HomePage() {
   const [openFaq, setOpenFaq] = useState<number | null>(null)
+
+  const proyectosDestacados = projectsData.filter(proj => proj.destacado);
 
   return (
     <div className="min-h-screen bg-background">
@@ -409,60 +412,19 @@ export default function HomePage() {
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold mb-4 text-balance">Galería de Proyectos</h2>
             <p className="text-muted-foreground text-lg max-w-2xl mx-auto text-pretty">
-              Galería de proyectos - Próximamente
+              Nuestros trabajos más recientes
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {[
-              {
-                title: "Prototipo de Drone Racing",
-                category: "Aeronáutica",
-                material: "PLA Negro",
-                description: "Chasis completo para drone de carreras, peso optimizado",
-                image: "/drone-racing-frame-3d-printed-black-pla-lightweigh.jpg",
-              },
-              {
-                title: "Repuesto Automotriz BMW",
-                category: "Automotriz",
-                material: "ABS Gris",
-                description: "Soporte de espejo retrovisor, resistente a temperatura",
-                image: "/bmw-car-mirror-bracket-3d-printed-grey-abs-automot.jpg",
-              },
-              {
-                title: "Miniatura Arquitectónica",
-                category: "Arquitectura",
-                material: "Resina Blanca",
-                description: "Maqueta de edificio residencial, detalles ultra finos",
-                image: "/architectural-building-model-white-resin-3d-printe.jpg",
-              },
-              {
-                title: "Prótesis de Mano",
-                category: "Médico",
-                material: "PLA+ Skin",
-                description: "Prótesis funcional personalizada, articulaciones móviles",
-                image: "/prosthetic-hand-3d-printed-pla-skin-color-function.jpg",
-              },
-              {
-                title: "Herramienta Industrial",
-                category: "Industrial",
-                material: "PETG Transparente",
-                description: "Guía de corte personalizada para producción en serie",
-                image: "/industrial-cutting-guide-transparent-petg-3d-print.jpg",
-              },
-              {
-                title: "Joyería Artesanal",
-                category: "Arte",
-                material: "Resina Casteable",
-                description: "Anillo con diseño orgánico para fundición en plata",
-                image: "/organic-ring-design-castable-resin-3d-printed-jewe.jpg",
-              },
-            ].map((project, i) => (
+            {projectsData.map((project, i) => (
               <Card key={i} className="group hover:shadow-lg transition-shadow overflow-hidden">
                 <div className="aspect-[4/3] bg-muted/50 flex items-center justify-center">
-                  <div className="text-center p-6">
-                    <Package className="h-12 w-12 mx-auto text-muted-foreground mb-3" />
-                    <p className="text-muted-foreground">Galería de proyectos próximamente</p>
-                  </div>
+                  <img 
+                    src={project.image} 
+                    alt={project.title}
+                    className="w-full h-full object-cover"
+                    loading="lazy"
+                  />
                 </div>
                 <CardContent className="p-4">
                   <div className="flex items-center justify-between mb-2">
@@ -479,6 +441,39 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      {proyectosDestacados.length > 0 && (
+        <section className="py-12 px-4 bg-accent/5">
+          <div className="container mx-auto">
+            <h2 className="text-3xl font-bold mb-8 text-center">Proyectos Destacados</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {proyectosDestacados.map((project, i) => (
+                <Card key={`destacado-${i}`} className="border-accent/30">
+                  <div className="aspect-[4/3] bg-muted/50 flex items-center justify-center">
+                    <img 
+                      src={project.image} 
+                      alt={project.title}
+                      className="w-full h-full object-cover"
+                      loading="lazy"
+                    />
+                  </div>
+                  <CardContent className="p-4">
+                    <div className="flex items-center justify-between mb-2">
+                      <Badge variant="secondary" className="text-xs">
+                        {project.category}
+                      </Badge>
+                      <span className="text-xs text-muted-foreground font-medium">{project.material}</span>
+                    </div>
+                    <h3 className="font-semibold mb-2 text-balance">{project.title}</h3>
+                    <p className="text-sm text-muted-foreground text-pretty">{project.description}</p>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
       {/* Process Section */}
       <section className="py-24 px-4 bg-background">
         <div className="container mx-auto max-w-6xl">
