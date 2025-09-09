@@ -38,8 +38,6 @@ import projectsData from '@/data/projects.json';
 export default function HomePage() {
   const [openFaq, setOpenFaq] = useState<number | null>(null)
 
-  const proyectosDestacados = projectsData.filter(proj => proj.destacado);
-
   return (
     <div className="min-h-screen bg-background">
       <header className="sticky top-0 z-50 bg-background/95 backdrop-blur-sm border-b border-border shadow-sm">
@@ -108,7 +106,6 @@ export default function HomePage() {
             <p className="text-xl md:text-2xl text-muted-foreground mb-8 text-pretty max-w-3xl mx-auto leading-relaxed">
               Soluciones personalizadas, acabados profesionales y soporte directo contigo en cada etapa del proyecto.
               <br />
-              <span className="text-lg">Resolución de hasta <strong className="font-semibold">0.05mm</strong> y tolerancias de <strong className="font-semibold">±0.1mm</strong> garantizadas.</span>
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
@@ -328,7 +325,7 @@ export default function HomePage() {
             ].map((service, i) => (
               <Card key={i} className="group hover:shadow-xl transition-all duration-300 border-border/50 overflow-hidden bg-card rounded-xl shadow-sm">
                 {service.popular && (
-                  <div className="bg-gradient-to-r from-accent to-accent/80 text-white text-sm font-medium text-center py-1.5" aria-label="Servicio más solicitado">
+                  <div className="bg-gradient-to-r from-accent to-accent/80 text-white text-xs font-bold px-2 py-1 rounded-full z-20">
                     ¡Más solicitado!
                   </div>
                 )}
@@ -441,38 +438,6 @@ export default function HomePage() {
           </div>
         </div>
       </section>
-
-      {proyectosDestacados.length > 0 && (
-        <section className="py-12 px-4 bg-accent/5">
-          <div className="container mx-auto">
-            <h2 className="text-3xl font-bold mb-8 text-center">Proyectos Destacados</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {proyectosDestacados.map((project, i) => (
-                <Card key={`destacado-${i}`} className="border-accent/30">
-                  <div className="aspect-[4/3] bg-muted/50 flex items-center justify-center">
-                    <img 
-                      src={project.image} 
-                      alt={project.title}
-                      className="w-full h-full object-cover"
-                      loading="lazy"
-                    />
-                  </div>
-                  <CardContent className="p-4">
-                    <div className="flex items-center justify-between mb-2">
-                      <Badge variant="secondary" className="text-xs">
-                        {project.category}
-                      </Badge>
-                      <span className="text-xs text-muted-foreground font-medium">{project.material}</span>
-                    </div>
-                    <h3 className="font-semibold mb-2 text-balance">{project.title}</h3>
-                    <p className="text-sm text-muted-foreground text-pretty">{project.description}</p>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-          </div>
-        </section>
-      )}
 
       {/* Process Section */}
       <section className="py-24 px-4 bg-background">
@@ -786,7 +751,7 @@ export default function HomePage() {
               <ul className="space-y-2">
                 <li><a href="#inicio" className="text-muted-foreground hover:text-primary transition-colors">Inicio</a></li>
                 <li><a href="#servicios" className="text-muted-foreground hover:text-primary transition-colors">Servicios</a></li>
-                <li><a href="#proyectos" className="text-muted-foreground hover:text-primary transition-colors">Proyectos</a></li>
+                <li><a href="#galeria" className="text-muted-foreground hover:text-primary transition-colors">Galería</a></li>
                 <li><a href="#faq" className="text-muted-foreground hover:text-primary transition-colors">Preguntas Comunes</a></li>
                 <li><a href="#contacto" className="text-muted-foreground hover:text-primary transition-colors">Contacto</a></li>
               </ul>

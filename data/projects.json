@@ -4,23 +4,20 @@
     "category": "Modelo a escala",
     "material": "PETG",
     "description": "Modelo a escala 1:4 del Titan Emperador Warhammer 40k, dividido en muchas piezas para su impresión.",
-    "image": "/proximamente.png",
-    "destacado": true
+    "image": "/proximamente.png"
   },
   {
     "title": "Avion Aeronca Champion",
     "category": "Modelo a escala",
     "material": "PETG",
     "description": "Avion Aeronca Champion, modelo a escala 1:4, dividido en muchas piezas para su impresión.",
-    "image": "/proximamente.png",
-    "destacado": false
+    "image": "/proximamente.png"
   },
   {
     "title": "Nave Crucero de Batalla",
     "category": "Modelo a escala",
     "material": "PETG",
     "description": "Nave Crucero de Batalla, modelo a escala 1:4, dividido en muchas piezas para su impresión.",
-    "image": "/proximamente.png",
-    "destacado": false
+    "image": "/proximamente.png"
   }
 ]
