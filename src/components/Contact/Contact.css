@@ -1,0 +1,52 @@
+.contact {
+  /* Contact styles */
+  padding: 5rem 1rem;
+  background: var(--card);
+}
+
+.contact-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.contact-methods {
+  max-width: 600px;
+  margin: 3rem auto 0;
+}
+
+.contact-methods h3 {
+  font-size: 1.25rem;
+  margin-bottom: 1.5rem;
+}
+
+.contact-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.contact-item p {
+  color: var(--muted-foreground);
+  margin-bottom: 0.25rem;
+  font-size: 0.875rem;
+}
+
+.contact-link {
+  color: var(--primary);
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.contact-link:hover {
+  text-decoration: underline;
+}
+
+.contact-address {
+  color: var(--foreground);
+}
+
+.address-note {
+  display: block;
+  font-size: 0.875rem;
+  color: var(--muted-foreground);
+}
